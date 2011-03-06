@@ -46,7 +46,7 @@ Put this inside Vagrantfile:
         # Enable provisioning with chef solo, specifying a cookbooks path (relative
         # to this Vagrantfile), and adding some recipes and/or roles.
         config.vm.provision :chef_solo do |chef|
-          chef.cookbooks_path = "../egra-cookbook"
+          chef.cookbooks_path = "../egra-cookbooks"
           chef.add_recipe "egra"
         end
 
