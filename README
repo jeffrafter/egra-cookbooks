@@ -2,11 +2,23 @@ These are just quick cookbooks that can be used with Vagrant.
 
 1) Install and setup Vagrant with a base box.
 
+  gem install vagrant
+  vagrant box add base http://files.vagrantup.com/lucid32.box
+
 2) Get egra (https://github.com/mikeymckay/egra)
+
+  git clone git://github.com/mikeymckay/egra
 
 3) Get egra-cookbooks (https://github.com/jeffrafter/egra-cookbooks)
 
+  git clone git://github.com/jeffrafter/egra-cookbooks.git
+
 4) Setup a Vagrantfile inside of egra
+
+  cd egra
+  vim Vagrantfile
+
+Put this inside Vagrantfile:
 
       Vagrant::Config.run do |config|
         # All Vagrant configuration is done here. The most common configuration
