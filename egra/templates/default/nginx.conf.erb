@@ -1,0 +1,11 @@
+server {
+  listen   80;
+  server_name  egra;
+  access_log  /var/log/nginx/localhost.access.log;
+
+  location / {
+    root    /srv/egra/public;
+    index  index.html;
+  }
+}
+

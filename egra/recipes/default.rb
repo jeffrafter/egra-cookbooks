@@ -10,12 +10,24 @@ log "===================================================="
 log "Box contains: apt, build-essential, nginx, node, npm"
 log "===================================================="
 
+template "#{node[:nginx][:dir]}/sites-available/#{'egra'}" do
+  source "nginx.conf.erb"
+end
+
+nginx_site "default" do
+  enable false
+end
+
+nginx_site "egra" do
+  enable true
+end
+
 npm_package "coffee-script"
 
-execute "coffee" do
+# This script is kinda brutal as it runs every second. inotify is too laggy though
+execute "coffee compiling watch script" do
   cwd "/srv/egra"
-  command "nohup coffee -w -c -b -o /src/egra/ /srv/egra/*.coffee 1> /srv/egra/logs/coffee.out.log 2> /srv/egra/logs/coffee.err.log &"
+  command "nohup script/coffee &"
   action :run
-  environment ({})
 end
 
