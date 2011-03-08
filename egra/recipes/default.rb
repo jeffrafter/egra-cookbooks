@@ -27,7 +27,7 @@ npm_package "coffee-script"
 # This script is kinda brutal as it runs every second. inotify is too laggy though
 execute "coffee compiling watch script" do
   cwd "/srv/egra"
-  command "nohup script/coffee &"
+  command "cd /srv/egra; nohup scripts/coffee_watcher.sh 1> /srv/egra/log/watch.out.log 2> /srv/egra/log/watch.err.log &"
   action :run
 end
 
