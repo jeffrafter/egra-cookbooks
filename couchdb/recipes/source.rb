@@ -47,6 +47,7 @@ when "debian", "ubuntu"
   end
 
   if node[:platform_version].to_f >= 10.04
+    # This was 1.9.2.8 but that no longer works
     compile_flags = "--with-js-lib=/usr/lib/xulrunner-devel-1.9.2.15/lib --with-js-include=/usr/lib/xulrunner-devel-1.9.2.15/include"
   end
 end
@@ -85,6 +86,13 @@ cookbook_file "/etc/init.d/couchdb" do
   owner "root"
   group "root"
   mode "0755"
+end
+
+template "/usr/local/etc/couchdb/local.ini" do
+  source "local.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
 end
 
 service "couchdb" do
